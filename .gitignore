@@ -1,0 +1,14 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/
+
+# env / secrets (never commit; supplied by operator)
+.env
+.env.*
+*.local
+
+# os / editor cruft
+.DS_Store

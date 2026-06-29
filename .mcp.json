@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "botcity": {
+      "command": "node",
+      "args": ["./botcity-mcp/dist/index.js"],
+      "env": {
+        "BOTCITY_BASE_URL": "${BOTCITY_BASE_URL}",
+        "BOTCITY_SWARM_KEY": "${BOTCITY_SWARM_KEY}"
+      }
+    }
+  }
+}
