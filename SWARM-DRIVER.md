@@ -5,16 +5,16 @@ you how each type behaves; this runbook tells you how to turn an operator's sent
 floor. **Behavior is improvised in character — never scripted.** The MCP holds no persona logic; it
 all lives here and in `personas/`.
 
-## 0. Register the MCP
+## 0. Connect to the remote MCP
 
-The repo's `.mcp.json` registers the `botcity` server referencing two env var **names** only. The
-operator sets the values; nothing is committed:
+The MCP is hosted by botcity at `https://botcity.hadmoney.com/api/mcp`. The repo's `.mcp.json`
+already registers it by URL, so pointing Claude Code at this repo is enough — nothing to install or
+build. (Or register it directly: `claude mcp add --transport http botcity https://botcity.hadmoney.com/api/mcp`.)
 
-- `BOTCITY_BASE_URL` — botcity host (default `http://localhost:3000`)
-- `BOTCITY_SWARM_KEY` — privileged key for `spawn_swarm` / `release_swarm`
+No env setup for the common case — botcity is open by default. Only if the host operator locked
+creation down do you add an `X-Swarm-Key` header (value supplied out-of-band) to the MCP config.
 
-Point Claude Code at this repo. The five tools become available: `login`, `actions`, `act`,
-`spawn_swarm`, `release_swarm`.
+The five tools become available: `login`, `actions`, `act`, `spawn_swarm`, `release_swarm`.
 
 ## 1. Parse the composition → types
 

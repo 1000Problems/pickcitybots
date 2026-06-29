@@ -8,8 +8,8 @@
  * in-memory roster (handle -> { token, type }) rebuilt each session.
  *
  * Configured by two env vars ONLY:
- *   BOTCITY_BASE_URL   (default http://localhost:3000)
- *   BOTCITY_SWARM_KEY  (required for spawn_swarm / release_swarm)
+ *   BOTCITY_BASE_URL   (default https://botcity.hadmoney.com)
+ *   BOTCITY_SWARM_KEY  (optional; only needed if the host has locked creation down)
  */
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
@@ -18,7 +18,7 @@ import { z } from "zod";
 
 // ---- config (env only; no secrets committed) --------------------------------
 
-const BASE_URL = (process.env.BOTCITY_BASE_URL ?? "http://localhost:3000").replace(/\/+$/, "");
+const BASE_URL = (process.env.BOTCITY_BASE_URL ?? "https://botcity.hadmoney.com").replace(/\/+$/, "");
 const SWARM_KEY = process.env.BOTCITY_SWARM_KEY ?? "";
 
 // ---- in-memory roster (never persisted to disk) -----------------------------

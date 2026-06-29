@@ -1,3 +1,7 @@
+> ⚠️ SUPERSEDED by `TASK-pcb-03-remote-kit.md` + `botcity/TASK-botcity-09-mcp-route.md`. The MCP
+> server moved into botcity and is served remotely over HTTP; the kit no longer ships a local server.
+> Kept for history; do not build.
+
 # TASK: pickcitybots MCP server (thin, stateless)
 
 > The seam between Claude Code and botcity. It logs bots in, relays the host's affordance menu, acts,
