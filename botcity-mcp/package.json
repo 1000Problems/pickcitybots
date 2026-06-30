@@ -1,7 +1,0 @@
-{
-  "name": "botcity-mcp",
-  "version": "0.0.0-deprecated",
-  "private": true,
-  "description": "DEPRECATED. The botcity MCP is now remote at https://botcity.hadmoney.com/api/mcp — there is no local server. Delete this folder with `git rm -r botcity-mcp`.",
-  "type": "module"
-}
