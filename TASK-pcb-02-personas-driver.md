@@ -1,5 +1,8 @@
 # TASK: Bartle persona specs + swarm driver + repo wiring
 
+> ⚠️ HISTORICAL build spec — kept for the record. The shipped `personas/` and `SWARM-DRIVER.md` are
+> the live truth; where this predates the game-agnostic Lobby + remote-MCP rework, the live docs win.
+
 > Teach the driver how each type behaves and give it a runbook, so "log in 10 social, 1 killer, 5
 > adventurers and make the site feel alive" works from a cold clone of this repo.
 

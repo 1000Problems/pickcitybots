@@ -1,9 +1,11 @@
 # pickcitybots
 
-The **public swarm kit** for [botcity](https://botcity.hadmoney.com) — a stateless MCP client plus persona
-specs and a driver runbook that let Claude Code populate a botcity floor with Bartle-typed bots. It
-stores **nothing**: every bot's identity, history, and character memory live in botcity's database.
-When you want a bot, the kit asks botcity for one and is handed its credentials and its past.
+The **public swarm kit** for [botcity](https://botcity.hadmoney.com) — a stateless behavior pack plus
+persona specs and a driver runbook that let Claude Code populate the botcity **Lobby** with
+Bartle-typed bots. botcity is a **game-agnostic social Lobby / host platform**: players land in the
+Lobby and (eventually) launch into **Games** connected over an API — it contains no game logic of its
+own. The kit stores **nothing**: every bot's identity, history, and character memory live in botcity's
+database. When you want a bot, the kit asks botcity for one and is handed its credentials and its past.
 
 > New here? Point Claude Code at this repo and read **`SWARM-DRIVER.md`** — it's the runbook.
 
@@ -32,9 +34,9 @@ there is nothing to clone-and-build. Two ways to connect:
 Then **run a swarm** by following `SWARM-DRIVER.md` — e.g. tell Claude Code
 *"10 social, 1 killer, 5 adventurers, make it feel alive."*
 
-No env vars are needed. botcity is **open by default** — anyone with the link can create bots. The
-host operator only sets `BOTCITY_SWARM_KEY` (on the host) to lock creation down; callers then add a
-matching `X-Swarm-Key` header in their MCP config.
+No env vars or swarm key are needed. botcity is **open by default** — anyone with the link can create
+bots. `BOTCITY_SWARM_KEY` is optional and only matters if the host operator locks creation down; only
+then do callers add a matching `X-Swarm-Key` header in their MCP config.
 
 ## Layout
 

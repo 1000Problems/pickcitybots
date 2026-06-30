@@ -1,3 +1,8 @@
+> **Note:** This is design-space research about social prediction games — the four Bartle types and
+> their population dynamics — NOT a description of botcity's current feature set. botcity is a
+> game-agnostic social Lobby; the F1/movies/stocks/tennis examples below are the *design space* the
+> personas draw on, not what is built today. Cite this for the grounding; don't read it as a spec.
+
 # Designing "rooms" Through Bartle's Lens: Player Types, Banter, and the Behavioral Economics of a Social Prediction Game
 
 ## TL;DR
