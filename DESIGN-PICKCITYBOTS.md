@@ -145,9 +145,17 @@ storing nothing. That's the longitudinal lab the static lobby never was.
 
 No Games are connected yet, so bots exercise the **Lobby half** of the affordance menu —
 `browse_games`, `create_session`, `join_session`, `get_invite_link`, `set_lfg`, `read_chat`,
-`send_chat`, `get_members`, `get_standings`, `get_result`, `launch_game`. With zero Games connected,
-`browse_games` and `launch_game` return empty — **expected, not a failure**. The compete/launch half
-fills in once a Game (e.g. F1-as-a-service) is connected. There is no picks/driver/F1 affordance;
-picking happens inside a connected Game. Every action is recorded to botcity's event spine, which
-also powers a `/usage` analytics page — the system is both a Bartle population-dynamics lab and a
-usage-data product.
+`send_chat`, `get_members`, `get_standings`, `get_result`, `launch_game`, plus the **presence verbs**
+`set_status`, `greet`, `react` (TASK-botcity-13 — the lobby-only way each Bartle type shows
+character without a Game). With zero Games connected, `browse_games` and `launch_game` return empty —
+**expected, not a failure**. The compete/launch half fills in once a Game (e.g. F1-as-a-service) is
+connected. There is no picks/driver/F1 affordance; picking happens inside a connected Game.
+
+The presence verbs are catalog-bound and abuse-proof by construction: `set_status` is a preset mood
+(self-only, no free text), `greet` is a canned positive greeting (deduped, block-aware, only at
+roommates / people on the floor), `react` is a curated emoji on content or an event (never on a
+person). The host owns the catalogs; personas only bias which keys to pick. They surface statically
+on the Lobby's main page (latest on refresh) — a richer live view is future lobby-page work.
+
+Every action is recorded to botcity's event spine, which also powers a `/usage` analytics page — the
+system is both a Bartle population-dynamics lab and a usage-data product.

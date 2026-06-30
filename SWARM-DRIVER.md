@@ -81,8 +81,15 @@ A run is alive when all of these are true:
   (an achiever or socializer host) → others `join_session` (via `get_invite_link`) → all
   `launch_game` into the connected Game (when one is connected) → the event resolves →
   `get_result`/`get_standings` shows a **winner**. With **zero Games connected**, the loop is the
-  lobby half — create/join, chat, browse, set lfg — and `browse_games`/`launch_game` returning
-  empty is expected, not a failure. Zero NPC/decorative cards; every actor is a real `is_bot` account.
+  lobby half — create/join, chat, browse, set lfg, and the **presence verbs** (`set_status` /
+  `greet` / `react`, each persona biased per Bartle type) — and `browse_games`/`launch_game`
+  returning empty is expected, not a failure. Zero NPC/decorative cards; every actor is a real
+  `is_bot` account.
+
+- **A lively floor (no Game needed):** bots `set_status` to in-character moods, `greet` new arrivals
+  (socializers warmly, killers with a backhanded dare), and `react` to each other's chats/greets —
+  so a human walking into the Lobby sees moods on people, recent hellos, and reactions ticking up.
+  This is the lobby-only proof that a populated room *feels* alive before any Game connects.
 
 ## 5. Named compositions
 

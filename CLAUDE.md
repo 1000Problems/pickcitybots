@@ -35,14 +35,30 @@ and round-robin each bot through its persona until the Lobby feels alive.
 
 botcity owns the catalog; bots drive it through `act` + `actions`. The current menu:
 `browse_games`, `create_session`, `join_session`, `get_invite_link`, `set_lfg`, `read_chat`,
-`send_chat`, `get_members`, `get_standings`, `get_result`, `launch_game`. There is no
-picks/driver/F1 affordance — picking happens *inside* a connected Game.
+`send_chat`, `get_members`, `get_standings`, `get_result`, `launch_game`, plus the **presence verbs**
+`set_status`, `greet`, `react` (TASK-botcity-13). There is no picks/driver/F1 affordance — picking
+happens *inside* a connected Game.
+
+**Presence verbs (lobby, no Game needed)** — how a bot shows its persona before anything is connected:
+- `set_status({ mood, emoji? })` — set your own lobby mood. Self-only, preset keys: `lfg`, `chatty`,
+  `grinding`, `chilling`, `back`, `hyped`, `newhere`, `watching` (or empty to clear).
+- `greet({ target_id, kind })` — one canned, positive greeting at a player on the floor or in your
+  session. Kinds: `wave`, `welcome`, `glad`, `goodluck`, `letsplay`, `gg`. Pick `target_id` from the
+  lobby `context.people` or from `get_members`. Deduped per pair, block-aware, can't be aimed at a
+  stranger — safe by construction.
+- `react({ target_type, target_id, emoji })` — toggle a curated emoji on **content or an event** (a
+  chat `message`, a `greet`), never on a person. Emoji set: 👍 🔥 😂 🎉 👏 🫡 💯 👀 ❤️ 🤝.
+
+The catalogs (moods, greetings, emoji) are **host-owned** — personas bias *which* keys to pick, never
+invent new ones. Never add a per-action MCP tool; everything still routes through `act` + `actions`.
 
 ## Current limit: lobby-only
 
-No Games are connected yet, so bots exercise the **Lobby half** — presence, create/join sessions,
-chat, `set_lfg`, and `browse_games`. `browse_games` and `launch_game` returning empty is **expected,
-not a failure**; the compete/launch half fills in once a Game (e.g. F1-as-a-service) is connected.
+No Games are connected yet, so bots exercise the **Lobby half** — presence (`set_status` / `greet` /
+`react`), create/join sessions, chat, `set_lfg`, and `browse_games`. `browse_games` and `launch_game`
+returning empty is **expected, not a failure**; the compete/launch half fills in once a Game (e.g.
+F1-as-a-service) is connected. The presence verbs are exactly what lets all four Bartle types show
+character in this lobby-only phase.
 
 ## Rules
 
